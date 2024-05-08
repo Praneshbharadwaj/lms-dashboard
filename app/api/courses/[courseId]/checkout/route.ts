@@ -68,14 +68,19 @@ export async function POST(
       customer: stripeCustomer.stripeCustomerId,
       line_items,
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?success=1`,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?succes=1`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/courses/${course.id}?canceled=1`,
       metadata: {
         courseId: course.id,
         userId: user!.id,
       },
     });
-
+    await db.purchase.create({
+      data: {
+        courseId: params.courseId,
+        userId: user!.id,
+      },
+    });
     return NextResponse.json({ url: session.url });
   } catch (error) {
     console.log("[Course_id checkout]", error);
