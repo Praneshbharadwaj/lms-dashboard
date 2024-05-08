@@ -5,7 +5,7 @@ export default authMiddleware({
   publicRoutes: [
     "/api/webhook",
     "/api/uploadthing",
-    "https://lms-dashboard-ecru.vercel.app/api/uploadthing",
+    // "https://lms-dashboard-ecru.vercel.app/api/uploadthing",
   ],
   // Routes that can always be accessed, and have
   // no authentication information
