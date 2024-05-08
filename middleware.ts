@@ -2,7 +2,11 @@ import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
   // Routes that can be accessed while signed out
-  publicRoutes: ["/api/webhook", "/api/uploadthing"],
+  publicRoutes: [
+    "/api/webhook",
+    "/api/uploadthing",
+    "https://lms-dashboard-ecru.vercel.app/api/uploadthing",
+  ],
   // Routes that can always be accessed, and have
   // no authentication information
   ignoredRoutes: ["/no-auth-in-this-route"],
